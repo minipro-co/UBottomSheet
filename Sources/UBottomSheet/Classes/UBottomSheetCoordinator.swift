@@ -529,7 +529,7 @@ public class UBottomSheetCoordinator {
         }
 
         let height = max(availableHeight - minSheetPosition!, availableHeight - newY)
-        let f = CGRect(x: 0, y: newY, width: oldFrame.width, height: height)
+        let f = CGRect(x: oldFrame.origin.x, y: newY, width: oldFrame.width, height: height)
         container?.frame = f
 
         self.delegate?.bottomSheet(self.container, didChange: .progressing(f.minY, calculatePercent(at: f.minY)))
@@ -559,7 +559,7 @@ public class UBottomSheetCoordinator {
         guard position != 0 else {return}
         let oldFrame = container!.frame
         let height = max(availableHeight - minSheetPosition!, availableHeight - position)
-        let f = CGRect(x: 0, y: position, width: oldFrame.width, height: height)
+        let f = CGRect(x: oldFrame.origin.x, y: position, width: oldFrame.width, height: height)
 
         self.delegate?.bottomSheet(self.container, didChange: .willFinish(position, self.calculatePercent(at: position)))
 
